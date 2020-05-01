@@ -1,0 +1,19 @@
+{
+  "name": "react-json-schema-final-form",
+  "version": "0.0.1",
+  "description": "Render a Final Form using JSON schema and UI Schema",
+  "main": "index.js",
+  "scripts": {
+    "start": "",
+    "test": "jest"
+  },
+  "keywords": [
+    "final",
+    "form",
+    "react",
+    "JSON",
+    "schema"
+  ],
+  "author": "Deshiknaves",
+  "license": "ISC"
+}
