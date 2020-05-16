@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "eslint": "eslint --ignore-path .gitignore --ext .js,.jsx .",
-    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|md|json)\"",
+    "eslint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx .",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|md|json|ts|tsx)\"",
     "format": "npm run prettier -- --write",
+    "check-types": "tsc",
     "check-format": "npm run prettier -- --list-different",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
@@ -15,7 +16,7 @@
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "precommit": "lint-staged",
     "lint": "jest --config test/jest.lint.js",
-    "validate": "npm run test:coverage",
+    "validate": "npm-run-all --parallel check-types test:coverage",
     "storybook": "start-storybook -p 6006",
     "start": "npm run storybook",
     "build-storybook": "build-storybook"

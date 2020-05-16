@@ -1,18 +1,32 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "eslint-config-prettier"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-prettier",
+    "eslint-config-prettier/@typescript-eslint"
   ],
-  "plugins": ["import"],
+  "plugins": [
+    "import"
+  ],
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
   },
   "rules": {
-    "strict": ["error", "never"]
+    "strict": [
+      "error",
+      "never"
+    ]
   },
   "env": {
+    "es6": true,
     "browser": true,
     "jest": true,
     "node": true
