@@ -1,15 +1,17 @@
 import { register, getByType, create, match } from './catalogue'
+import noop from 'lodash/noop'
+import stubTrue from 'lodash/stubTrue'
 
 const items = [
   {
     type: 'string',
-    predicate: () => true,
-    creator: () => { },
+    predicate: stubTrue,
+    creator: noop,
   },
   {
     type: 'string',
-    predicate: () => true,
-    creator: () => { },
+    predicate: stubTrue,
+    creator: noop,
   },
 ]
 
@@ -36,18 +38,18 @@ describe('Catalogue', () => {
     const catalogue = create([
       {
         type: 'string',
-        predicate: ({ name }) => name === 'foo',
-        creator: () => 'foo',
+        predicate: ({ name }): boolean => name === 'foo',
+        creator: (): string => 'foo',
       },
       {
         type: 'string',
-        predicate: ({ name }) => name === 'bar',
-        creator: () => 'bar',
+        predicate: ({ name }): boolean => name === 'bar',
+        creator: (): string => 'bar',
       },
       {
         type: 'string',
-        predicate: ({ name }) => name === 'bar',
-        creator: () => 'bar2',
+        predicate: ({ name }): boolean => name === 'bar',
+        creator: (): string => 'bar2',
       },
     ])
 

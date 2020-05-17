@@ -1,11 +1,12 @@
 import set from 'lodash/set'
 import get from 'lodash/get'
 
+type Creator = (fn?: any) => any
 
 type RegistrationEntry = {
   type: string
   predicate(fn: any): boolean
-  creator(fn: any): any
+  creator: Creator
 }
 
 type Registration = Omit<RegistrationEntry, 'type'>
@@ -14,24 +15,26 @@ type Catalogue = {
   string?: Registration[]
 }
 
-export const create = (items: RegistrationEntry[]) => registerItems({}, items)
-
-export const registerItems = (catalogue = {}, items: RegistrationEntry[]) => {
-  items.forEach(registration => register(catalogue, registration))
-
-  return catalogue
-}
-
-export const register = (catalogue: Catalogue, { type, predicate, creator }) => {
+export const register = (catalogue: Catalogue, { type, predicate, creator }): void => {
   const section =
     get(catalogue, type) || set(catalogue, type, [])[type]
 
   section.push({ predicate, creator })
 }
 
-export const getByType = (catalogue: Catalogue, type: string) => get(catalogue, type)
+export const registerItems = (catalogue = {}, items: RegistrationEntry[]): Catalogue => {
+  items.forEach(registration => register(catalogue, registration))
 
-export const match = (catalogue: Catalogue, type: string, data: any) => {
+  return catalogue
+}
+
+export const create = (items: RegistrationEntry[]): Catalogue => {
+  return registerItems({}, items)
+}
+
+export const getByType = (catalogue: Catalogue, type: string): Registration[] => get(catalogue, type)
+
+export const match = (catalogue: Catalogue, type: string, data: any): Creator | null => {
   const items = getByType(catalogue, type)
   const iterator = items[Symbol.iterator]()
 
