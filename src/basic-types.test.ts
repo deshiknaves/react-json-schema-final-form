@@ -19,7 +19,6 @@ describe('Basic Types', () => {
     expect(creator()).toMatchInlineSnapshot(`"number"`)
   })
 
-  // Should it in JavaScript? To be safe just match them as number
   it('should be able to match an integer', () => {
     const schema = { type: SCHEMA_TYPE.NUMBER, format: SCHEMA_FORMAT.INTEGER }
     const creator = match(catalogue, schema.type, schema)
@@ -27,7 +26,6 @@ describe('Basic Types', () => {
     expect(creator()).toMatchInlineSnapshot(`"integer"`)
   })
 
-  // Should it in JavaScript? To be safe just match them as number
   it('should be able to match an float', () => {
     const schema = { type: SCHEMA_TYPE.NUMBER, format: SCHEMA_FORMAT.FLOAT }
     const creator = match(catalogue, schema.type, schema)
