@@ -1,8 +1,8 @@
 module.exports = {
   ...require('./test/jest.common'),
   collectCoverageFrom: [
-    '**/src/**/*.{js|ts|tsx|jsx}',
-    '!**/*.test.{js|ts|jsx|tsx}',
+    '**/src/**/*.(js|ts|tsx|jsx)',
+    '!**/*.test.(js|ts|jsx|tsx)',
     '!**/node_modules/**',
   ],
   coverageThreshold: {
