@@ -1,3 +1,6 @@
 export enum SCHEMA_TYPES {
-  STRING = 'string'
+  STRING = 'string',
+  NUMBER = 'number',
+  INTEGER = 'integer',
+  FLOAT = 'float',
 }

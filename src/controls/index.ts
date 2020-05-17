@@ -1,3 +1,5 @@
 import { string } from './string'
+import { number, integer, float } from './number'
 
-export const controls = [string]
+// Order matters. More specific > generic
+export const controls = [integer, float, number, string]
