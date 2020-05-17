@@ -1,17 +1,22 @@
 import { register, getByType, create, match } from './catalogue'
-import noop from 'lodash/noop'
 import stubTrue from 'lodash/stubTrue'
 
 const items = [
   {
     type: 'string',
     predicate: stubTrue,
-    creator: noop,
+    creator: () => ({
+      component: 'input',
+      props: {},
+    }),
   },
   {
     type: 'string',
     predicate: stubTrue,
-    creator: noop,
+    creator: () => ({
+      component: 'input',
+      props: {},
+    }),
   },
 ]
 
@@ -46,23 +51,45 @@ describe('Catalogue', () => {
     const catalogue = create([
       {
         type: 'string',
-        predicate: ({ name }): boolean => name === 'foo',
-        creator: (): string => 'foo',
+        predicate: ({ name }): boolean => name === 'bar',
+        creator: () => ({
+          component: 'input',
+          props: {
+            name: 'bar',
+          },
+        }),
       },
       {
         type: 'string',
-        predicate: ({ name }): boolean => name === 'bar',
-        creator: (): string => 'bar',
+        predicate: ({ name }): boolean => name === 'bar2',
+        creator: () => ({
+          component: 'input',
+          props: {
+            name: 'bar2',
+          },
+        }),
       },
       {
         type: 'string',
-        predicate: ({ name }): boolean => name === 'bar',
-        creator: (): string => 'bar2',
+        predicate: ({ name }): boolean => name === 'bar3',
+        creator: () => ({
+          component: 'input',
+          props: {
+            name: 'bar3',
+          },
+        }),
       },
     ])
 
     const creator = match(catalogue, 'string', { name: 'bar' })
 
-    expect(creator()).toEqual('bar')
+    expect(creator()).toMatchInlineSnapshot(`
+      Object {
+        "component": "input",
+        "props": Object {
+          "name": "bar",
+        },
+      }
+    `)
   })
 })
