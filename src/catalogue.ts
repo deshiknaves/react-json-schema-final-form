@@ -36,6 +36,7 @@ export const getByType = (catalogue: Catalogue, type: string): Registration[] =>
 
 export const match = (catalogue: Catalogue, type: string, data: any): Creator | null => {
   const items = getByType(catalogue, type)
+  if (!items) return null
   const iterator = items[Symbol.iterator]()
 
   let next = iterator.next()

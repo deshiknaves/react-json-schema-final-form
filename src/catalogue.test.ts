@@ -34,6 +34,14 @@ describe('Catalogue', () => {
     expect(getByType(catalogue, 'string')).toHaveLength(2)
   })
 
+  it('should be able to return null for an empty type catalogue', () => {
+    const catalogue = create([])
+
+    const creator = match(catalogue, 'string', {})
+
+    expect(creator).toBeNull()
+  })
+
   it('should be able to resolve the item that matches a predicate', () => {
     const catalogue = create([
       {
