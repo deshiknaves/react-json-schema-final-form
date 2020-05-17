@@ -5,6 +5,7 @@
     // to true so running type checking doesn't generate any files.
     "noEmit": true,
     "baseUrl": "./src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "react"
   }
 }
