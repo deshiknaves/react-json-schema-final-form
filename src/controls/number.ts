@@ -1,5 +1,5 @@
 import { RegistrationEntry } from 'types'
-import { SCHEMA_TYPE } from '../constants'
+import { SCHEMA_TYPE, SCHEMA_FORMAT } from '../constants'
 import stubTrue from 'lodash/stubTrue'
 
 export const number: RegistrationEntry = {
@@ -9,13 +9,13 @@ export const number: RegistrationEntry = {
 }
 
 export const integer: RegistrationEntry = {
-  type: SCHEMA_TYPE.INTEGER,
-  predicate: stubTrue,
-  creator: () => 'number',
+  type: SCHEMA_TYPE.NUMBER,
+  predicate: ({ format }) => format === SCHEMA_FORMAT.INTEGER,
+  creator: () => 'integer',
 }
 
 export const float: RegistrationEntry = {
-  type: SCHEMA_TYPE.FLOAT,
-  predicate: stubTrue,
-  creator: () => 'number',
+  type: SCHEMA_TYPE.NUMBER,
+  predicate: ({ format }) => format === SCHEMA_FORMAT.FLOAT,
+  creator: () => 'float',
 }
