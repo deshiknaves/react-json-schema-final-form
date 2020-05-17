@@ -39,4 +39,11 @@ describe('Basic Types', () => {
 
     expect(creator()).toMatchInlineSnapshot(`"object"`)
   })
+
+  it('should be able to match an array', () => {
+    const schema = { type: SCHEMA_TYPE.ARRAY }
+    const creator = match(catalogue, schema.type, schema)
+
+    expect(creator()).toMatchInlineSnapshot(`"array"`)
+  })
 })
