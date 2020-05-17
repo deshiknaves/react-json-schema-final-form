@@ -26,10 +26,17 @@ describe('Basic Types', () => {
     expect(creator()).toMatchInlineSnapshot(`"integer"`)
   })
 
-  it('should be able to match an float', () => {
+  it('should be able to match a float', () => {
     const schema = { type: SCHEMA_TYPE.NUMBER, format: SCHEMA_FORMAT.FLOAT }
     const creator = match(catalogue, schema.type, schema)
 
     expect(creator()).toMatchInlineSnapshot(`"float"`)
+  })
+
+  it('should be able to match an object', () => {
+    const schema = { type: SCHEMA_TYPE.OBJECT }
+    const creator = match(catalogue, schema.type, schema)
+
+    expect(creator()).toMatchInlineSnapshot(`"object"`)
   })
 })
