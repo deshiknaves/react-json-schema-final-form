@@ -1,4 +1,4 @@
-export enum SCHEMA_TYPES {
+export enum SCHEMA_TYPE {
   STRING = 'string',
   NUMBER = 'number',
   INTEGER = 'int',

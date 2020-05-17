@@ -1,9 +1,9 @@
 import { RegistrationEntry } from 'types'
-import { SCHEMA_TYPES } from '../constants'
+import { SCHEMA_TYPE } from '../constants'
 import stubTrue from 'lodash/stubTrue'
 
 export const string: RegistrationEntry = {
-  type: SCHEMA_TYPES.STRING,
+  type: SCHEMA_TYPE.STRING,
   predicate: stubTrue,
-  creator: () => 'string'
+  creator: () => 'string',
 }
