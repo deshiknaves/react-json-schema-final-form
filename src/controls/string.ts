@@ -5,5 +5,10 @@ import stubTrue from 'lodash/stubTrue'
 export const string: RegistrationEntry = {
   type: SCHEMA_TYPE.STRING,
   predicate: stubTrue,
-  creator: () => 'string',
+  creator: () => ({
+    component: 'input',
+    props: {
+      type: 'string',
+    },
+  }),
 }

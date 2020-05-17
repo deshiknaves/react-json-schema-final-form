@@ -5,5 +5,8 @@ import stubTrue from 'lodash/stubTrue'
 export const array: RegistrationEntry = {
   type: SCHEMA_TYPE.ARRAY,
   predicate: stubTrue,
-  creator: () => 'array',
+  creator: () => ({
+    component: 'input',
+    props: {},
+  }),
 }
