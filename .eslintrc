@@ -8,9 +8,7 @@
     "eslint-config-prettier",
     "eslint-config-prettier/@typescript-eslint"
   ],
-  "plugins": [
-    "import"
-  ],
+  "plugins": ["import"],
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",
@@ -20,10 +18,8 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "strict": [
-      "error",
-      "never"
-    ]
+    "strict": ["error", "never"],
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
   "env": {
     "es6": true,
