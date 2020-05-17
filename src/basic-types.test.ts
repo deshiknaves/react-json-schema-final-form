@@ -20,7 +20,7 @@ describe('Basic Types', () => {
 
   // Should it in JavaScript? To be safe just match them as number
   it('should be able to match an integer', () => {
-    const schema = { type: 'integer' }
+    const schema = { type: 'int' }
     const creator = match(catalogue, schema.type, schema)
 
     expect(creator()).toMatchInlineSnapshot(`"number"`)
