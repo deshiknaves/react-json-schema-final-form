@@ -1,19 +1,7 @@
 import set from 'lodash/set'
 import get from 'lodash/get'
 
-type Creator = (fn?: any) => any
-
-type RegistrationEntry = {
-  type: string
-  predicate(fn: any): boolean
-  creator: Creator
-}
-
-type Registration = Omit<RegistrationEntry, 'type'>
-
-type Catalogue = {
-  string?: Registration[]
-}
+import { Catalogue, RegistrationEntry, Registration, Creator } from 'types'
 
 export const register = (catalogue: Catalogue, { type, predicate, creator }): void => {
   const section =
